@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "oz-django-project"
+version = "0.1.0"
+description = ""
+authors = ["SwanyCastle <seunghwan712@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.3"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+isort = "^5.13.2"
+mypy = "^1.8.0"
+django-stubs = "^4.2.7"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+python_version = 3.12
+strict = true
+
+[[tool.mypy.overrides]]
+module = "*.migrations.*"
+ignore_erros = true
+
+[[tool.mypy.overrides]]
+module = "manage"
+ignore_erros = true
+
+[tool.django-stubs]
+django_settings_module = "oz_django_project.settings"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
